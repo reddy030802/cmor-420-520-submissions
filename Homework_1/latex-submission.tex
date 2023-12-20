@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{verbatim}
+
+\title{CMOR 420/520, Homework \#1: LaTeX\ Submission}
+\author{\texttt{mr72}}
+\date{September 7, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Communicating with remote machines via ssh}
+
+\begin{verbatim}
+$ ssh your_username@remote_host
+Welcome to remote_host!
+$ echo $HOSTNAME
+remote_host
+\end{verbatim}
+
+\section{A script to build a LaTeX document while hiding auxiliary files}
+
+\begin{lstlisting}[language=bash, basicstyle=\ttfamily, caption={Script to compile LaTeX documents and manage auxiliary files.}]
+mkdir -p .build
+pdflatex -output-directory .build "$project.tex"
+mv .build/"$project.pdf" .
+mkdir -p cmor-420-520-submissions/homework-1
+mv clean-build.sh cmor-420-520-submissions/homework-1/
+cd cmor-420-520-submissions/homework-1
+git add clean-build.sh
+git commit -m "Add clean-build script"
+\end{lstlisting}
+
+[Some critiques I found with the script is that it does not correctly handle the git operations for a specific subdirectory. The script moves the clean-build.sh to the cmor-420-520-submissions/homework-1 directory after committing it, which is not the standard workflow for Git operations. ]
+
+\end{document}
