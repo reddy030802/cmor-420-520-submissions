@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+
+\title{Homework 3 Writeup}
+\author{Mainavi Reddy}
+\date{November 22nd, 2023}
+
+\begin{document}
+\maketitle
+
+\section{Compilation}
+The project was compiled using the following command:
+\begin{verbatim}
+g++ -o main main.cpp -std=c++11
+\end{verbatim}
+
+\section{Implementation}
+Vector arithmetic operations were implemented to perform iterative calculations efficiently. These operations included addition and subtraction of vectors, as well as scalar multiplication, which were essential in the iterative update steps of the algorithm. Proper memory management was also taken into account to avoid leaks and ensure optimal performance.
+
+\section{Verification and Timing}
+The algorithm's performance was evaluated using two different matrix representations: DenseRowMatrix and SparseMatrixCSR. For each matrix type, the number of iterations to reduce the norm of the residual vector \( r \) to below \( 1 \times 10^{-3} \), the final value of \( \text{norm}(r) \), and the time per iteration were recorded.
+
+\subsection{DenseRowMatrix}
+\begin{verbatim}
+./main DenseRowMatrix.cpp
+Number of iterations: 4596
+Final norm of r: 0.000999119
+Time per iteration: 4.86265e-05 seconds
+\end{verbatim}
+
+\subsection{SparseMatrixCSR}
+\begin{verbatim}
+./main SparseMatrixCSR.cpp
+Number of iterations: 4596
+Final norm of r: 0.000999119
+Time per iteration: 4.7993e-05 seconds
+\end{verbatim}
+
+\subsection{SparseMatrixCSR Representation}
+The `SparseMatrixCSR` structure represents a sparse matrix efficiently by storing only the non-zero elements and their respective row and column indices. This compact storage scheme avoids the redundancy of storing zeros, thus saving memory and computational time, particularly for large matrices where the number of non-zero elements is much smaller than the total number of elements.
+
+\end{document}
