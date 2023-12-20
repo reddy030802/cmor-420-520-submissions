@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+
+\title{Homework 2 Writeup}
+\author{Mainavi Reddy}
+\date{October 13th, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Compilation}
+Commands used to compile the project:
+\begin{verbatim}
+clang -o Homework_2/timing Homework_2/timing.c Homework_2/matrix.c
+clang -o Homework_2/verification Homework_2/verification.c Homework_2/matrix.c
+\end{verbatim}
+
+\section{Verification}
+Output of the verification code:
+\begin{verbatim}
+./verification 1000 1000 10
+The error in computing b=Ax for matvec with contiguous matrix storage is 0.000000e+00
+The error in computing b=Ax for matvec with non-contiguous matrix storage is 0.000000e+00
+./verification 2000 2000 10
+The error in computing b=Ax for matvec with contiguous matrix storage is 0.000000e+00
+The error in computing b=Ax for matvec with non-contiguous matrix storage is 0.000000e+00
+./verification 3000 3000 10
+The error in computing b=Ax for matvec with contiguous matrix storage is 0.000000e+00
+The error in computing b=Ax for matvec with non-contiguous matrix storage is 0.000000e+00
+./verification 4000 4000 10
+The error in computing b=Ax for matvec with contiguous matrix storage is 0.000000e+00
+The error in computing b=Ax for matvec with non-contiguous matrix storage is 0.000000e+00
+\end{verbatim}
+
+\section{Timing}
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|c|c|c|c}
+\hline
+& m=n=1000 & m=n=2000 & m=n=3000 & m=n=4000 \\
+\hline
+matvec (Contiguous) & 0.003311 s & 0.008800 s & 0.016181 s & 0.026594 s \\
+matvec (NonContiguous) & 0.002089 s & 0.005894 s & 0.013259 s & 0.024397 s \\
+matvec\_transpose (Contiguous) & 0.000000 s & 0.000000 s & 0.000000 s & 0.000000 s \\
+matvec\_transpose (NonContiguous) & 0.000000 s & 0.000000 s & 0.000000 s & 0.000000 s \\
+\hline
+\end{tabular}
+\caption{Runtimes for Matrix-Vector Multiplication}
+\label{tab:timing}
+\end{table}
+
+\end{document}
